@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A simple and responsive To-Do web application built with HTML, CSS and JavaScript."
+    >
+
+    <title>TaskFlow | To-Do App</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="header-inner">
+
+            <a href="#" class="logo">
+                Task<span>Flow</span>
+            </a>
+
+            <div class="header-label">
+                DAILY TASK MANAGER
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="container">
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div>
+
+                <p class="eyebrow">
+                    STAY ORGANIZED
+                </p>
+
+                <h1>
+                    Get things
+                    <span>done.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Organize your day, track your progress and
+                    keep moving forward.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ADD TASK
+        ========================== -->
+
+        <section class="add-task-card">
+
+            <form id="taskForm">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What needs to be done?"
+                    maxlength="150"
+                    autocomplete="off"
+                >
+
+                <button
+                    type="submit"
+                    class="add-button"
+                >
+                    Add Task
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- =========================
+             TASK LISTS
+        ========================== -->
+
+        <section class="tasks-section">
+
+
+            <!-- PENDING -->
+
+            <div class="task-column">
+
+                <div class="list-header">
+
+                    <div>
+
+                        <p class="list-label">
+                            PENDING TASKS
+                        </p>
+
+                        <h2>
+                            To do
+                        </h2>
+
+                    </div>
+
+                    <span
+                        class="count pending-count"
+                        id="pendingCount"
+                    >
+                        0 pending
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="task-list"
+                    id="pendingTasks"
+                >
+                    <!-- Tasks inserted by JavaScript -->
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="pendingEmpty"
+                >
+
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
+                    <p>
+                        No pending tasks
+                    </p>
+
+                    <span>
+                        You're all caught up.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COMPLETED -->
+
+            <div class="task-column">
+
+                <div class="list-header">
+
+                    <div>
+
+                        <p class="list-label">
+                            COMPLETED TASKS
+                        </p>
+
+                        <h2>
+                            Done
+                        </h2>
+
+                    </div>
+
+                    <span
+                        class="count completed-count"
+                        id="completedCount"
+                    >
+                        0 completed
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="task-list"
+                    id="completedTasks"
+                >
+                    <!-- Tasks inserted by JavaScript -->
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="completedEmpty"
+                >
+
+                    <div class="empty-icon">
+                        —
+                    </div>
+
+                    <p>
+                        Nothing completed yet
+                    </p>
+
+                    <span>
+                        Finished tasks will appear here.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <p>
+            Built with HTML, CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
