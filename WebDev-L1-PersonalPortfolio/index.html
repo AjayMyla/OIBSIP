@@ -2,618 +2,1405 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
-        content="Ajay Myla - Computer Science student and aspiring web developer portfolio."
+        content="Ajay Myla — Front-End Developer, Data Analyst and C & Python Developer."
     >
 
-    <title>Ajay Myla | Web Developer</title>
+    <meta
+        name="author"
+        content="Ajay Myla"
+    >
+
+    <title>Ajay Myla | Developer Portfolio</title>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Stylesheet -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
 
-    <header class="header">
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-        <nav class="navbar">
+<header class="header" id="header">
 
-            <a href="#home" class="logo">
-                AJ<span>.</span>
-            </a>
+    <nav class="navbar">
 
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <a href="#contact" class="nav-button">
-                Let's Talk
-            </a>
-
-        </nav>
-
-    </header>
+        <a href="#home" class="logo">
+            AJ<span>.</span>
+        </a>
 
 
-    <main>
-
-        <!-- =========================
-             HERO SECTION
-        ========================== -->
-
-        <section class="hero" id="home">
-
-            <div class="hero-content">
-
-                <div class="hero-text">
-
-                    <p class="intro">
-                        HELLO, I'M
-                    </p>
-
-                    <h1>
-                        AJAY <span>MYLA.</span>
-                    </h1>
-
-                    <h2>
-                        Aspiring Web Developer
-                    </h2>
-
-                    <p class="hero-description">
-                        Computer Science and Engineering student passionate
-                        about web development, UI design and building
-                        practical digital experiences.
-                    </p>
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="#projects"
-                            class="primary-button"
-                        >
-                            View Projects
-                        </a>
-
-                        <a
-                            href="#contact"
-                            class="secondary-button"
-                        >
-                            Contact Me
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Profile -->
-
-                <div class="profile-area">
-
-                    <div class="profile-ring">
-
-                        <img
-                            src="images/profile.jpg"
-                            alt="Ajay Myla - Web Developer"
-                        >
-
-                    </div>
-
-                    <div class="profile-label">
-
-                        <strong>
-                            AJAY MYLA
-                        </strong>
-
-                        <span>
-                            Computer Science Student
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT SECTION
-        ========================== -->
-
-        <section
-            class="section about"
-            id="about"
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation"
         >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-            <div class="container">
 
-                <p class="section-label">
-                    01 / ABOUT
-                </p>
+        <div class="nav-links" id="navLinks">
 
-                <h2>
-                    A little about <span>me.</span>
-                </h2>
+            <a href="#home" class="nav-link active">Home</a>
 
+            <a href="#about" class="nav-link">About</a>
 
-                <div class="about-content">
+            <a href="#skills" class="nav-link">Skills</a>
 
-                    <p>
-                        I'm a B.Tech Computer Science and Engineering student
-                        with a strong interest in web development, UI design
-                        and software development.
-                    </p>
+            <a href="#experience" class="nav-link">Experience</a>
 
-                    <p>
-                        I enjoy creating responsive websites and practical
-                        applications while continuously improving my
-                        programming, problem-solving and development skills.
-                    </p>
+            <a href="#projects" class="nav-link">Projects</a>
 
-                </div>
-
-
-                <!-- Education -->
-
-                <div class="education">
-
-                    <div class="education-item">
-
-                        <span>
-                            EDUCATION
-                        </span>
-
-                        <strong>
-                            B.Tech — Computer Science & Engineering
-                        </strong>
-
-                    </div>
-
-
-                    <div class="education-item">
-
-                        <span>
-                            COLLEGE
-                        </span>
-
-                        <strong>
-                            Malla Reddy College of Engineering
-                        </strong>
-
-                    </div>
-
-
-                    <div class="education-item">
-
-                        <span>
-                            PERIOD
-                        </span>
-
-                        <strong>
-                            2023 — 2027
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SKILLS SECTION
-        ========================== -->
-
-        <section
-            class="section skills"
-            id="skills"
-        >
-
-            <div class="container">
-
-                <p class="section-label">
-                    02 / SKILLS
-                </p>
-
-                <h2>
-                    What I <span>work with.</span>
-                </h2>
-
-
-                <div class="skills-grid">
-
-
-                    <!-- Frontend -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Frontend
-                        </h3>
-
-                        <div class="skill-list">
-
-                            <span>HTML5</span>
-
-                            <span>CSS3</span>
-
-                            <span>JavaScript</span>
-
-                            <span>Responsive Web Design</span>
-
-                            <span>UI/UX Design</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Programming -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Programming
-                        </h3>
-
-                        <div class="skill-list">
-
-                            <span>Python</span>
-
-                            <span>C</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Backend -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Backend & Database
-                        </h3>
-
-                        <div class="skill-list">
-
-                            <span>Flask</span>
-
-                            <span>MySQL</span>
-
-                            <span>REST APIs</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Tools -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Tools
-                        </h3>
-
-                        <div class="skill-list">
-
-                            <span>Git</span>
-
-                            <span>GitHub</span>
-
-                            <span>VS Code</span>
-
-                            <span>Basic React.js</span>
-
-                            <span>Basic Node.js</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PROJECTS SECTION
-        ========================== -->
-
-        <section
-            class="section projects"
-            id="projects"
-        >
-
-            <div class="container">
-
-                <p class="section-label">
-                    03 / PROJECTS
-                </p>
-
-                <h2>
-                    Things I've <span>built.</span>
-                </h2>
-
-
-                <div class="project-grid">
-
-
-                    <!-- Project 1 -->
-
-                    <article class="project-card">
-
-                        <div class="project-number">
-                            01
-                        </div>
-
-                        <p class="project-type">
-                            WEB APPLICATION
-                        </p>
-
-                        <h3>
-                            Movie Recommendation System
-                        </h3>
-
-                        <p>
-                            A web application built with Flask that retrieves
-                            movie information using the OMDB API and provides
-                            genre-based movie recommendations.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Python</span>
-                            <span>Flask</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>OMDB API</span>
-
-                        </div>
-
-                        <a
-                            href="https://github.com/AjayMyla"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="project-link"
-                        >
-                            GitHub ↗
-                        </a>
-
-                    </article>
-
-
-                    <!-- Project 2 -->
-
-                    <article class="project-card">
-
-                        <div class="project-number">
-                            02
-                        </div>
-
-                        <p class="project-type">
-                            MACHINE LEARNING
-                        </p>
-
-                        <h3>
-                            Student Behavior Prediction
-                        </h3>
-
-                        <p>
-                            A Python-based analytical project that uses
-                            multimodal learning data to identify behavioral
-                            patterns and support personalized learning.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Python</span>
-                            <span>Machine Learning</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-
-                        </div>
-
-                        <a
-                            href="https://github.com/AjayMyla"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="project-link"
-                        >
-                            GitHub ↗
-                        </a>
-
-                    </article>
-
-
-                    <!-- Project 3 -->
-
-                    <article class="project-card">
-
-                        <div class="project-number">
-                            03
-                        </div>
-
-                        <p class="project-type">
-                            DEEP LEARNING
-                        </p>
-
-                        <h3>
-                            Online Recruitment Fraud Detection
-                        </h3>
-
-                        <p>
-                            A machine learning and deep learning project
-                            exploring Logistic Regression, Random Forest,
-                            CNN, LSTM and hybrid CNN-LSTM approaches.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Python</span>
-                            <span>CNN</span>
-                            <span>LSTM</span>
-                            <span>Machine Learning</span>
-
-                        </div>
-
-                        <a
-                            href="https://github.com/AjayMyla"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="project-link"
-                        >
-                            GitHub ↗
-                        </a>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT SECTION
-        ========================== -->
-
-        <section
-            class="section contact"
-            id="contact"
-        >
-
-            <div class="container contact-box">
-
-                <div>
-
-                    <p class="section-label">
-                        04 / CONTACT
-                    </p>
-
-                    <h2>
-                        Let's connect<span>.</span>
-                    </h2>
-
-                    <p class="contact-description">
-                        I'm always interested in learning, building new
-                        projects and exploring opportunities in web
-                        development.
-                    </p>
-
-                </div>
-
-
-                <div class="contact-details">
-
-                    <!-- Name -->
-
-                    <div class="contact-item">
-
-                        <span>
-                            NAME
-                        </span>
-
-                        <strong>
-                            Ajay Myla
-                        </strong>
-
-                    </div>
-
-
-                    <!-- Email -->
-
-                    <div class="contact-item">
-
-                        <span>
-                            EMAIL
-                        </span>
-
-                        <a
-                            href="mailto:meajaykumar96@gmail.com"
-                            class="email-link"
-                        >
-                            meajaykumar96@gmail.com
-                        </a>
-
-                    </div>
-
-
-                    <!-- Social Links -->
-
-                    <div class="social-links">
-
-                        <a
-                            href="https://github.com/AjayMyla"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            GitHub ↗
-                        </a>
-
-                        <a
-                            href="https://www.linkedin.com/in/ajaymyla"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            LinkedIn ↗
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <p>
-                © 2026 Ajay Myla. Built with HTML & CSS.
-            </p>
+            <a href="#contact" class="nav-link">Contact</a>
 
         </div>
 
-    </footer>
+
+        <a
+            href="assets/Ajay_Myla_Resume.pdf"
+            class="resume-button"
+            target="_blank"
+        >
+            Resume ↗
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero section-anchor" id="home">
+
+    <div class="hero-container">
+
+
+        <div class="hero-content reveal">
+
+            <div class="availability">
+
+                <span class="status-dot"></span>
+
+                Open to opportunities
+
+            </div>
+
+
+            <p class="eyebrow">
+                HELLO, I'M
+            </p>
+
+
+            <h1>
+
+                AJAY
+
+                <span>
+                    MYLA.
+                </span>
+
+            </h1>
+
+
+            <h2>
+                Front-End Developer
+                <span>·</span>
+                Data Analyst
+            </h2>
+
+
+            <p class="hero-description">
+
+                Computer Science and Engineering student passionate
+                about building responsive web experiences, analyzing
+                data and developing practical software solutions.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#projects"
+                    class="primary-button"
+                >
+                    View My Work
+                    <span>↗</span>
+                </a>
+
+
+                <a
+                    href="#contact"
+                    class="secondary-button"
+                >
+                    Let's Connect
+                </a>
+
+            </div>
+
+
+            <div class="quick-links">
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub ↗
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/ajaymyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn ↗
+                </a>
+
+                <a
+                    href="mailto:meajaykumar96@gmail.com"
+                >
+                    Email ↗
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROFILE -->
+
+        <div class="hero-profile reveal">
+
+            <div class="profile-orbit orbit-one"></div>
+
+            <div class="profile-orbit orbit-two"></div>
+
+
+            <div class="profile-image-wrapper">
+
+                <img
+                    src="assets/profile.jpg"
+                    alt="Ajay Myla"
+                >
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <strong>
+                    AJAY MYLA
+                </strong>
+
+                <span>
+                    CSE Student · 2023–2027
+                </span>
+
+            </div>
+
+
+            <div class="floating-card card-one">
+
+                <strong>
+                    7.87
+                </strong>
+
+                <span>
+                    CGPA
+                </span>
+
+            </div>
+
+
+            <div class="floating-card card-two">
+
+                <strong>
+                    5+
+                </strong>
+
+                <span>
+                    Projects
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-indicator">
+
+        <span></span>
+
+        Scroll to explore
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="section section-anchor"
+    id="about"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <p class="section-number">
+                01 / ABOUT
+            </p>
+
+            <h2>
+                Building with
+                <span>purpose.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <div class="about-main reveal">
+
+                <p class="large-text">
+
+                    I'm a Computer Science and Engineering student
+                    focused on front-end development, data analysis
+                    and practical software development.
+
+                </p>
+
+
+                <p>
+
+                    I enjoy transforming ideas into clean,
+                    responsive digital experiences while continuously
+                    improving my programming, problem-solving and
+                    development skills.
+
+                </p>
+
+
+                <p>
+
+                    Currently, I'm developing my skills through
+                    real-world projects and hands-on internship
+                    experience.
+
+                </p>
+
+            </div>
+
+
+            <div class="about-facts reveal">
+
+                <div class="fact">
+
+                    <span>
+                        EDUCATION
+                    </span>
+
+                    <strong>
+                        B.Tech CSE
+                    </strong>
+
+                    <small>
+                        Malla Reddy College of Engineering
+                    </small>
+
+                </div>
+
+
+                <div class="fact">
+
+                    <span>
+                        CGPA
+                    </span>
+
+                    <strong>
+                        7.87
+                    </strong>
+
+                    <small>
+                        Current academic performance
+                    </small>
+
+                </div>
+
+
+                <div class="fact">
+
+                    <span>
+                        LOCATION
+                    </span>
+
+                    <strong>
+                        Telangana, India
+                    </strong>
+
+                    <small>
+                        Available for opportunities
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section
+    class="section dark-section section-anchor"
+    id="skills"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <p class="section-number">
+                02 / SKILLS
+            </p>
+
+            <h2>
+                Tools I
+                <span>work with.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    &lt;/&gt;
+                </div>
+
+                <h3>
+                    Front-End
+                </h3>
+
+                <p>
+                    Building responsive and user-focused
+                    web interfaces.
+                </p>
+
+                <div class="tags">
+
+                    <span>HTML5</span>
+
+                    <span>CSS3</span>
+
+                    <span>JavaScript</span>
+
+                    <span>React.js</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    Py
+                </div>
+
+                <h3>
+                    Programming
+                </h3>
+
+                <p>
+                    Developing practical solutions using
+                    programming fundamentals.
+                </p>
+
+                <div class="tags">
+
+                    <span>Python</span>
+
+                    <span>C</span>
+
+                    <span>JavaScript</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    DB
+                </div>
+
+                <h3>
+                    Database & Tools
+                </h3>
+
+                <p>
+                    Working with databases and modern
+                    development workflows.
+                </p>
+
+                <div class="tags">
+
+                    <span>MySQL</span>
+
+                    <span>Git</span>
+
+                    <span>GitHub</span>
+
+                    <span>VS Code</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    ◫
+                </div>
+
+                <h3>
+                    Additional
+                </h3>
+
+                <p>
+                    Exploring backend development and
+                    data-focused technologies.
+                </p>
+
+                <div class="tags">
+
+                    <span>Node.js</span>
+
+                    <span>Data Analysis</span>
+
+                    <span>Flask</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     EXPERIENCE
+========================= -->
+
+<section
+    class="section section-anchor"
+    id="experience"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <p class="section-number">
+                03 / EXPERIENCE
+            </p>
+
+            <h2>
+                Where I've
+                <span>learned.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="experience-card reveal">
+
+            <div class="experience-date">
+                2026
+            </div>
+
+
+            <div class="experience-content">
+
+                <p class="experience-company">
+                    OASIS INFOBYTE
+                </p>
+
+                <h3>
+                    Web Development & Designing Intern
+                </h3>
+
+                <p>
+
+                    Built responsive web pages using HTML, CSS
+                    and JavaScript, including a personal profile
+                    page and landing page.
+
+                </p>
+
+                <p>
+
+                    Applied frontend design principles and used
+                    Git and GitHub to organize project development.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>HTML</span>
+
+                    <span>CSS</span>
+
+                    <span>JavaScript</span>
+
+                    <span>Git</span>
+
+                    <span>GitHub</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section
+    class="section dark-section section-anchor"
+    id="projects"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <p class="section-number">
+                04 / PROJECTS
+            </p>
+
+            <h2>
+                Selected
+                <span>work.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="project-card featured reveal">
+
+                <div class="project-top">
+
+                    <span class="project-index">
+                        01
+                    </span>
+
+                    <span class="project-category">
+                        WEB APPLICATION
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Movie Recommendation System
+                </h3>
+
+
+                <p>
+
+                    A Flask-based movie recommendation system
+                    using the OMDB API for movie search and
+                    genre-based discovery.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>Python</span>
+
+                    <span>Flask</span>
+
+                    <span>OMDB API</span>
+
+                    <span>HTML</span>
+
+                    <span>CSS</span>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    View on GitHub ↗
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-top">
+
+                    <span class="project-index">
+                        02
+                    </span>
+
+                    <span class="project-category">
+                        DEEP LEARNING
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Online Recruitment Fraud Detection
+                </h3>
+
+
+                <p>
+
+                    Developed a deep-learning system to detect
+                    fraudulent recruitment postings using text
+                    analysis and multiple machine learning models.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>Python</span>
+
+                    <span>Logistic Regression</span>
+
+                    <span>Random Forest</span>
+
+                    <span>CNN</span>
+
+                    <span>LSTM</span>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    View on GitHub ↗
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-top">
+
+                    <span class="project-index">
+                        03
+                    </span>
+
+                    <span class="project-category">
+                        DATA / PYTHON
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Student Behavior Change Prediction
+                </h3>
+
+
+                <p>
+
+                    A Python-based system designed to identify
+                    student behavior patterns from multimodal
+                    learning data.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>Python</span>
+
+                    <span>Data Analysis</span>
+
+                    <span>Machine Learning</span>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    View on GitHub ↗
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-top">
+
+                    <span class="project-index">
+                        04
+                    </span>
+
+                    <span class="project-category">
+                        FRONT-END
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    E-Commerce Store Website
+                </h3>
+
+
+                <p>
+
+                    A responsive shopping interface with product
+                    filtering and cart functionality using
+                    front-end web technologies.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>HTML</span>
+
+                    <span>CSS</span>
+
+                    <span>JavaScript</span>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    View on GitHub ↗
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 5 -->
+
+            <article class="project-card reveal">
+
+                <div class="project-top">
+
+                    <span class="project-index">
+                        05
+                    </span>
+
+                    <span class="project-category">
+                        PORTFOLIO
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Personal Portfolio Website
+                </h3>
+
+
+                <p>
+
+                    A responsive portfolio website designed to
+                    showcase my skills, experience, projects and
+                    professional contact information.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>HTML</span>
+
+                    <span>CSS</span>
+
+                    <span>JavaScript</span>
+
+                    <span>Responsive Design</span>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    View on GitHub ↗
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CERTIFICATIONS
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <p class="section-number">
+                05 / CERTIFICATIONS
+            </p>
+
+            <h2>
+                Always
+                <span>learning.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="certifications-grid">
+
+
+            <div class="certificate reveal">
+
+                <span>
+                    01
+                </span>
+
+                <div>
+
+                    <strong>
+                        Gemini Certified Student
+                    </strong>
+
+                    <small>
+                        Google for Education
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate reveal">
+
+                <span>
+                    02
+                </span>
+
+                <div>
+
+                    <strong>
+                        Fundamentals of Digital Marketing
+                    </strong>
+
+                    <small>
+                        Google Digital Garage
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate reveal">
+
+                <span>
+                    03
+                </span>
+
+                <div>
+
+                    <strong>
+                        Artificial Intelligence Fundamentals
+                    </strong>
+
+                    <small>
+                        IBM SkillsBuild
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate reveal">
+
+                <span>
+                    04
+                </span>
+
+                <div>
+
+                    <strong>
+                        Getting Started with Artificial Intelligence
+                    </strong>
+
+                    <small>
+                        IBM SkillsBuild
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate reveal">
+
+                <span>
+                    05
+                </span>
+
+                <div>
+
+                    <strong>
+                        SQL and Relational Databases 101
+                    </strong>
+
+                    <small>
+                        IBM Skills Network / Cognitive Class
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="certificate reveal">
+
+                <span>
+                    06
+                </span>
+
+                <div>
+
+                    <strong>
+                        Data Science Essentials with Python
+                    </strong>
+
+                    <small>
+                        Cisco Networking Academy
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     EDUCATION
+========================= -->
+
+<section class="section dark-section">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <p class="section-number">
+                06 / EDUCATION
+            </p>
+
+            <h2>
+                My academic
+                <span>journey.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="education-list">
+
+
+            <div class="education-item reveal">
+
+                <div class="education-year">
+                    2023–2027
+                </div>
+
+                <div>
+
+                    <h3>
+                        B.Tech — Computer Science & Engineering
+                    </h3>
+
+                    <p>
+                        Malla Reddy College of Engineering,
+                        Hyderabad
+                    </p>
+
+                    <span>
+                        CGPA: 7.87
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="education-item reveal">
+
+                <div class="education-year">
+                    2021–2023
+                </div>
+
+                <div>
+
+                    <h3>
+                        Intermediate — MPC
+                    </h3>
+
+                    <p>
+                        ABV Junior College, Jangaon, Telangana
+                    </p>
+
+                    <span>
+                        84.9%
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="education-item reveal">
+
+                <div class="education-year">
+                    2020–2021
+                </div>
+
+                <div>
+
+                    <h3>
+                        SSC
+                    </h3>
+
+                    <p>
+                        Vaishnavi High School, Jangaon
+                    </p>
+
+                    <span>
+                        CGPA: 10.0
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+    class="section contact-section section-anchor"
+    id="contact"
+>
+
+    <div class="container">
+
+
+        <div class="contact-card reveal">
+
+
+            <div class="contact-intro">
+
+                <p class="section-number">
+                    07 / CONTACT
+                </p>
+
+                <h2>
+                    Let's build
+                    <span>something.</span>
+                </h2>
+
+                <p>
+
+                    Have an opportunity, project or idea?
+                    I'd love to hear about it.
+
+                </p>
+
+            </div>
+
+
+            <div class="contact-details">
+
+
+                <a
+                    href="mailto:meajaykumar96@gmail.com"
+                    class="contact-link"
+                >
+
+                    <span>
+                        EMAIL
+                    </span>
+
+                    <strong>
+                        meajaykumar96@gmail.com
+                    </strong>
+
+                    <b>
+                        ↗
+                    </b>
+
+                </a>
+
+
+                <a
+                    href="https://www.linkedin.com/in/ajaymyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link"
+                >
+
+                    <span>
+                        LINKEDIN
+                    </span>
+
+                    <strong>
+                        linkedin.com/in/ajaymyla
+                    </strong>
+
+                    <b>
+                        ↗
+                    </b>
+
+                </a>
+
+
+                <a
+                    href="https://github.com/AjayMyla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link"
+                >
+
+                    <span>
+                        GITHUB
+                    </span>
+
+                    <strong>
+                        github.com/AjayMyla
+                    </strong>
+
+                    <b>
+                        ↗
+                    </b>
+
+                </a>
+
+
+                <div class="contact-link">
+
+                    <span>
+                        LOCATION
+                    </span>
+
+                    <strong>
+                        Telangana, India
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <a href="#home" class="logo">
+            AJ<span>.</span>
+        </a>
+
+        <p>
+            © <span id="year"></span> Ajay Myla. Built with purpose.
+        </p>
+
+        <div class="footer-links">
+
+            <a
+                href="https://github.com/AjayMyla"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/ajaymyla"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- JavaScript -->
+<script src="script.js"></script>
 
 </body>
 
