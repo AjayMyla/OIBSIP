@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Get started with AVORA."
+    >
+
+    <title>Get Started — AVORA</title>
+
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="get-started.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                AV<span>ORA</span>
+            </a>
+
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+                ← Back to Home
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="page">
+
+
+        <section class="signup-card">
+
+
+            <!-- Icon -->
+
+            <div class="icon">
+                ✦
+            </div>
+
+
+            <!-- Label -->
+
+            <div class="label">
+                GET STARTED
+            </div>
+
+
+            <!-- Heading -->
+
+            <h1>
+
+                Start building
+
+                <span>
+                    better.
+                </span>
+
+            </h1>
+
+
+            <!-- Description -->
+
+            <p class="intro">
+
+                Create your AVORA workspace and bring
+                your ideas, projects and team together.
+
+            </p>
+
+
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <form id="signupForm">
+
+
+                <!-- Name -->
+
+                <div class="field">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Email -->
+
+                <div class="field">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Workspace -->
+
+                <div class="field">
+
+                    <label for="workspace">
+                        Workspace Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="workspace"
+                        placeholder="e.g. My Creative Team"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+
+                    Create Workspace
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- =================================================
+                 SUCCESS
+            ================================================== -->
+
+            <div
+                class="success"
+                id="success"
+            >
+
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+
+                <h2>
+                    Welcome to AVORA!
+                </h2>
+
+
+                <p>
+
+                    Your workspace is ready to begin.
+                    Start turning your ideas into meaningful work.
+
+                </p>
+
+
+                <a
+                    href="index.html"
+                    class="home-button"
+                >
+
+                    Back to AVORA
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 AVORA. A Vision. One Direction.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        const form =
+            document.getElementById("signupForm");
+
+        const success =
+            document.getElementById("success");
+
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                form.style.display =
+                    "none";
+
+
+                success.classList.add(
+                    "show"
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
