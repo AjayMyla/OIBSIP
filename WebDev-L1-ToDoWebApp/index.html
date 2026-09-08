@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
@@ -11,14 +10,13 @@
 
     <meta
         name="description"
-        content="A simple and responsive To-Do web application built with HTML, CSS and JavaScript."
+        content="Daymark — a modern, responsive personal task planner built with HTML, CSS and JavaScript."
     >
 
-    <title>TaskFlow | To-Do App</title>
+    <title>Daymark | Personal Task Planner</title>
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
@@ -26,7 +24,7 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
     >
 
@@ -34,236 +32,438 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <div class="app-shell">
 
-    <header class="header">
+        <!-- =========================
+             HEADER
+        ========================== -->
 
-        <div class="header-inner">
+        <header class="topbar">
 
-            <a href="#" class="logo">
-                Task<span>Flow</span>
+            <a
+                class="brand"
+                href="#"
+                aria-label="Daymark home"
+            >
+                <span class="brand-mark">D</span>
+                <span>daymark</span>
             </a>
 
-            <div class="header-label">
-                DAILY TASK MANAGER
-            </div>
+            <div class="topbar-actions">
 
-        </div>
-
-    </header>
-
-
-
-    <main class="container">
-
-        <!-- =========================
-             HERO
-        ========================== -->
-
-        <section class="hero">
-
-            <div>
-
-                <p class="eyebrow">
-                    STAY ORGANIZED
-                </p>
-
-                <h1>
-                    Get things
-                    <span>done.</span>
-                </h1>
-
-                <p class="hero-text">
-                    Organize your day, track your progress and
-                    keep moving forward.
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             ADD TASK
-        ========================== -->
-
-        <section class="add-task-card">
-
-            <form id="taskForm">
-
-                <input
-                    type="text"
-                    id="taskInput"
-                    placeholder="What needs to be done?"
-                    maxlength="150"
-                    autocomplete="off"
+                <span
+                    class="save-status"
+                    id="saveStatus"
                 >
+                    Saved locally
+                </span>
 
                 <button
-                    type="submit"
-                    class="add-button"
+                    class="icon-btn theme-btn"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme"
+                    title="Switch theme"
                 >
-                    Add Task
+                    ☼
                 </button>
 
-            </form>
+            </div>
 
-        </section>
-
+        </header>
 
 
         <!-- =========================
-             TASK LISTS
+             MAIN
         ========================== -->
 
-        <section class="tasks-section">
+        <main class="container">
 
 
-            <!-- PENDING -->
+            <!-- =========================
+                 INTRO
+            ========================== -->
 
-            <div class="task-column">
+            <section class="intro">
 
-                <div class="list-header">
+                <div>
+
+                    <p class="kicker">
+                        PERSONAL PLANNER
+                    </p>
+
+                    <h1>
+                        Make today<br>
+                        <em>count.</em>
+                    </h1>
+
+                    <p class="intro-copy">
+                        Capture what matters, focus on the next step,
+                        and see your progress at a glance.
+                    </p>
+
+                </div>
+
+
+                <!-- Progress -->
+
+                <div
+                    class="progress-card"
+                    aria-label="Daily progress"
+                >
+
+                    <div class="progress-top">
+
+                        <span>
+                            Today's progress
+                        </span>
+
+                        <strong id="progressPercent">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            class="progress-bar"
+                            id="progressBar"
+                        ></div>
+
+                    </div>
+
+
+                    <p id="progressText">
+                        0 of 0 tasks completed
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 ADD TASK
+            ========================== -->
+
+            <section class="planner-card">
+
+                <form
+                    id="taskForm"
+                    class="task-form"
+                >
+
+                    <div class="input-wrap">
+
+                        <span class="input-icon">
+                            ＋
+                        </span>
+
+                        <input
+                            id="taskInput"
+                            type="text"
+                            placeholder="What would you like to accomplish?"
+                            maxlength="150"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+                    <select
+                        id="priorityInput"
+                        aria-label="Task priority"
+                    >
+
+                        <option value="low">
+                            Low priority
+                        </option>
+
+                        <option
+                            value="medium"
+                            selected
+                        >
+                            Medium priority
+                        </option>
+
+                        <option value="high">
+                            High priority
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        id="dateInput"
+                        type="date"
+                        aria-label="Due date"
+                    >
+
+
+                    <button
+                        class="primary-btn"
+                        type="submit"
+                    >
+                        Add task
+                        <span>↵</span>
+                    </button>
+
+                </form>
+
+
+
+                <!-- Toolbar -->
+
+                <div class="toolbar">
+
+                    <div
+                        class="filter-group"
+                        role="group"
+                        aria-label="Filter tasks"
+                    >
+
+                        <button
+                            class="filter-btn active"
+                            data-filter="all"
+                            type="button"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            data-filter="active"
+                            type="button"
+                        >
+                            Active
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            data-filter="completed"
+                            type="button"
+                        >
+                            Completed
+                        </button>
+
+                    </div>
+
+
+                    <div class="toolbar-right">
+
+                        <label class="search-box">
+
+                            <span>
+                                ⌕
+                            </span>
+
+                            <input
+                                id="searchInput"
+                                type="search"
+                                placeholder="Search tasks..."
+                                aria-label="Search tasks"
+                            >
+
+                        </label>
+
+
+                        <button
+                            class="text-btn"
+                            id="clearCompleted"
+                            type="button"
+                        >
+                            Clear completed
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 STATISTICS
+            ========================== -->
+
+            <section
+                class="stats-row"
+                aria-label="Task summary"
+            >
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        TOTAL
+                    </span>
+
+                    <strong id="totalCount">
+                        0
+                    </strong>
+
+                    <span class="stat-note">
+                        all tasks
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        ACTIVE
+                    </span>
+
+                    <strong id="activeCount">
+                        0
+                    </strong>
+
+                    <span class="stat-note">
+                        still to do
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        DONE
+                    </span>
+
+                    <strong id="doneCount">
+                        0
+                    </strong>
+
+                    <span class="stat-note">
+                        completed
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        HIGH PRIORITY
+                    </span>
+
+                    <strong id="highCount">
+                        0
+                    </strong>
+
+                    <span class="stat-note">
+                        needs attention
+                    </span>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- =========================
+                 TASK LIST
+            ========================== -->
+
+            <section class="tasks-area">
+
+                <div class="section-heading">
 
                     <div>
 
-                        <p class="list-label">
-                            PENDING TASKS
+                        <p class="kicker">
+                            YOUR LIST
                         </p>
 
-                        <h2>
-                            To do
+                        <h2 id="listTitle">
+                            All tasks
                         </h2>
 
                     </div>
 
+
                     <span
-                        class="count pending-count"
-                        id="pendingCount"
+                        class="result-count"
+                        id="resultCount"
                     >
-                        0 pending
+                        0 tasks
                     </span>
 
                 </div>
 
 
                 <div
+                    id="taskList"
                     class="task-list"
-                    id="pendingTasks"
-                >
-                    <!-- Tasks inserted by JavaScript -->
-                </div>
+                    aria-live="polite"
+                ></div>
 
+
+                <!-- Empty State -->
 
                 <div
+                    id="emptyState"
                     class="empty-state"
-                    id="pendingEmpty"
                 >
 
-                    <div class="empty-icon">
+                    <div class="empty-mark">
                         ✓
                     </div>
 
-                    <p>
-                        No pending tasks
+                    <h3 id="emptyTitle">
+                        Your list is clear.
+                    </h3>
+
+                    <p id="emptyText">
+                        Add a task above and make your next move.
                     </p>
 
-                    <span>
-                        You're all caught up.
-                    </span>
-
                 </div>
+
+            </section>
+
+        </main>
+
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer class="footer">
+
+            <div>
+
+                <strong>
+                    daymark
+                </strong>
+
+                <span>
+                    Simple planning. Better days.
+                </span>
 
             </div>
 
+            <span>
+                Built with HTML, CSS & JavaScript ·
+                OIBSIP Level 1 Task 3
+            </span>
 
+        </footer>
 
-            <!-- COMPLETED -->
-
-            <div class="task-column">
-
-                <div class="list-header">
-
-                    <div>
-
-                        <p class="list-label">
-                            COMPLETED TASKS
-                        </p>
-
-                        <h2>
-                            Done
-                        </h2>
-
-                    </div>
-
-                    <span
-                        class="count completed-count"
-                        id="completedCount"
-                    >
-                        0 completed
-                    </span>
-
-                </div>
-
-
-                <div
-                    class="task-list"
-                    id="completedTasks"
-                >
-                    <!-- Tasks inserted by JavaScript -->
-                </div>
-
-
-                <div
-                    class="empty-state"
-                    id="completedEmpty"
-                >
-
-                    <div class="empty-icon">
-                        —
-                    </div>
-
-                    <p>
-                        Nothing completed yet
-                    </p>
-
-                    <span>
-                        Finished tasks will appear here.
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer class="footer">
-
-        <p>
-            Built with HTML, CSS & JavaScript
-        </p>
-
-    </footer>
-
+    </div>
 
 
     <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
-
 </html>

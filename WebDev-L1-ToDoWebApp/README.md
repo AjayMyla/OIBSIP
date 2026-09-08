@@ -1,58 +1,59 @@
-# TaskFlow — To-Do Web App
+# Daymark — Personal Task Planner
 
 ## OIBSIP Web Development — Level 1 Task 3
 
-TaskFlow is a responsive to-do web application developed using HTML5, CSS3 and Vanilla JavaScript.
+Daymark is a responsive task-planning web application redesigned with a warm editorial productivity theme.
 
-The application allows users to create, manage and organize daily tasks between pending and completed lists.
+It is built using HTML5, CSS3 and Vanilla JavaScript with browser LocalStorage for persistent task data.
+
+---
 
 ## Features
 
 - Add new tasks
-- Display pending tasks
-- Display completed tasks
-- Mark tasks as complete
-- Undo completed tasks
-- Edit tasks inline
+- High / Medium / Low priority
+- Optional due date
+- Pending and completed task states
+- Complete / Undo tasks
+- Inline task editing
 - Delete tasks
-- Pending task count
+- Search tasks
+- All / Active / Completed filters
+- Total task count
+- Active task count
 - Completed task count
-- Task timestamps
-- Empty-state messages
+- High-priority task count
+- Daily completion percentage
+- Visual progress bar
+- Clear completed tasks
+- Light / Dark mode
 - LocalStorage persistence
-- Responsive design
+- Responsive mobile, tablet and desktop layout
+- Keyboard-friendly controls
+- Accessible labels and focus states
+- Empty states for different filters
+
+---
 
 ## Technologies Used
 
 - HTML5
 - CSS3
-- JavaScript
+- Vanilla JavaScript
 - DOM Manipulation
 - LocalStorage
-- CSS Flexbox
 - CSS Grid
+- CSS Flexbox
 - Google Fonts
 
-## How It Works
+---
 
-1. Enter a task in the input field.
-2. Click "Add Task".
-3. The task appears in Pending Tasks.
-4. Click "Complete" to move it to Completed Tasks.
-5. Click "Undo" to return it to Pending Tasks.
-6. Click "Edit" to modify the task.
-7. Click "Delete" to permanently remove it.
+## Project Structure
 
-Tasks are automatically saved using browser LocalStorage, so they remain available after refreshing the page.
-
-## Author
-
-**Ajay Myla**
-
-Computer Science and Engineering Student
-
-GitHub: https://github.com/AjayMyla
-
-LinkedIn: https://www.linkedin.com/in/ajaymyla
-
-Email: meajaykumar96@gmail.com
+```text
+Daymark/
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md

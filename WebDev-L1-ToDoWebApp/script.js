@@ -1,5 +1,5 @@
 /* =========================================================
-   TASKFLOW — TO-DO WEB APP
+   DAYMARK — TASK PLANNER
    OIBSIP | Web Development | Level 1 | Task 3
    ========================================================= */
 
@@ -8,30 +8,115 @@
    ELEMENTS
 ========================= */
 
-const taskForm = document.getElementById("taskForm");
+const taskForm =
+    document.getElementById("taskForm");
 
-const taskInput = document.getElementById("taskInput");
+const taskInput =
+    document.getElementById("taskInput");
 
-const pendingTasks = document.getElementById("pendingTasks");
+const priorityInput =
+    document.getElementById("priorityInput");
 
-const completedTasks = document.getElementById("completedTasks");
+const dateInput =
+    document.getElementById("dateInput");
 
-const pendingEmpty = document.getElementById("pendingEmpty");
+const taskList =
+    document.getElementById("taskList");
 
-const completedEmpty = document.getElementById("completedEmpty");
+const emptyState =
+    document.getElementById("emptyState");
 
-const pendingCount = document.getElementById("pendingCount");
+const emptyTitle =
+    document.getElementById("emptyTitle");
 
-const completedCount = document.getElementById("completedCount");
+const emptyText =
+    document.getElementById("emptyText");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+const clearCompleted =
+    document.getElementById("clearCompleted");
+
+const saveStatus =
+    document.getElementById("saveStatus");
+
+
+/* Statistics */
+
+const totalCount =
+    document.getElementById("totalCount");
+
+const activeCount =
+    document.getElementById("activeCount");
+
+const doneCount =
+    document.getElementById("doneCount");
+
+const highCount =
+    document.getElementById("highCount");
+
+
+/* Progress */
+
+const progressPercent =
+    document.getElementById("progressPercent");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const progressText =
+    document.getElementById("progressText");
+
+
+/* List */
+
+const resultCount =
+    document.getElementById("resultCount");
+
+const listTitle =
+    document.getElementById("listTitle");
 
 
 /* =========================
    DATA
 ========================= */
 
-let tasks = JSON.parse(
-    localStorage.getItem("taskflowTasks")
-) || [];
+let tasks =
+    loadTasks();
+
+let currentFilter =
+    "all";
+
+
+/* =========================
+   LOAD TASKS
+========================= */
+
+function loadTasks() {
+
+    try {
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    "daymarkTasks"
+                )
+            );
+
+        return Array.isArray(saved)
+            ? saved
+            : [];
+
+    } catch {
+
+        return [];
+
+    }
+}
 
 
 /* =========================
@@ -41,142 +126,310 @@ let tasks = JSON.parse(
 function saveTasks() {
 
     localStorage.setItem(
-        "taskflowTasks",
+        "daymarkTasks",
         JSON.stringify(tasks)
     );
 
+    saveStatus.textContent =
+        "Saved just now";
+
+
+    clearTimeout(
+        saveTasks.timer
+    );
+
+
+    saveTasks.timer =
+        setTimeout(() => {
+
+            saveStatus.textContent =
+                "Saved locally";
+
+        }, 1400);
 }
 
 
 /* =========================
-   FORMAT TIME
+   FORMAT DATE
 ========================= */
 
-function formatTime(timestamp) {
+function formatDate(timestamp) {
 
-    const date = new Date(timestamp);
-
-    return date.toLocaleString([], {
-        dateStyle: "medium",
-        timeStyle: "short"
-    });
-
+    return new Date(timestamp)
+        .toLocaleString(
+            [],
+            {
+                dateStyle: "medium",
+                timeStyle: "short"
+            }
+        );
 }
 
 
 /* =========================
-   ADD TASK
+   FORMAT DUE DATE
 ========================= */
 
-taskForm.addEventListener("submit", function (event) {
+function formatDueDate(value) {
 
-    event.preventDefault();
+    if (!value) {
 
-
-    const text = taskInput.value.trim();
-
-
-    if (!text) {
-
-        taskInput.focus();
-
-        return;
-
+        return "";
     }
 
 
-    const newTask = {
+    const date =
+        new Date(
+            `${value}T00:00:00`
+        );
 
-        id: Date.now(),
 
-        text: text,
+    return date.toLocaleDateString(
+        [],
+        {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        }
+    );
+}
 
-        completed: false,
 
-        createdAt: Date.now(),
+/* =========================
+   GET VISIBLE TASKS
+========================= */
 
-        completedAt: null
+function getVisibleTasks() {
+
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    return tasks.filter(task => {
+
+        const filterMatch =
+
+            currentFilter === "all"
+
+            ||
+
+            (
+                currentFilter === "active"
+                &&
+                !task.completed
+            )
+
+            ||
+
+            (
+                currentFilter === "completed"
+                &&
+                task.completed
+            );
+
+
+        const searchMatch =
+
+            !query
+
+            ||
+
+            task.text
+                .toLowerCase()
+                .includes(query);
+
+
+        return (
+            filterMatch
+            &&
+            searchMatch
+        );
+
+    });
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render() {
+
+    const visible =
+        getVisibleTasks();
+
+
+    taskList.innerHTML =
+        "";
+
+
+    const active =
+        tasks.filter(
+            task =>
+                !task.completed
+        );
+
+
+    const completed =
+        tasks.filter(
+            task =>
+                task.completed
+        );
+
+
+    const high =
+        active.filter(
+            task =>
+                task.priority === "high"
+        );
+
+
+    const percent =
+        tasks.length
+            ? Math.round(
+                (
+                    completed.length
+                    /
+                    tasks.length
+                ) * 100
+            )
+            : 0;
+
+
+    /* Statistics */
+
+    totalCount.textContent =
+        tasks.length;
+
+    activeCount.textContent =
+        active.length;
+
+    doneCount.textContent =
+        completed.length;
+
+    highCount.textContent =
+        high.length;
+
+
+    /* Progress */
+
+    progressPercent.textContent =
+        `${percent}%`;
+
+    progressBar.style.width =
+        `${percent}%`;
+
+    progressText.textContent =
+        `${completed.length} of ${tasks.length} tasks completed`;
+
+
+    /* List title */
+
+    const titles = {
+
+        all:
+            "All tasks",
+
+        active:
+            "Active tasks",
+
+        completed:
+            "Completed tasks"
 
     };
 
 
-    tasks.unshift(newTask);
+    listTitle.textContent =
+        titles[currentFilter];
 
 
-    saveTasks();
+    /* Result count */
 
-    renderTasks();
-
-
-    taskInput.value = "";
-
-    taskInput.focus();
-
-});
+    resultCount.textContent =
+        `${visible.length} ${
+            visible.length === 1
+                ? "task"
+                : "tasks"
+        }`;
 
 
-/* =========================
-   RENDER TASKS
-========================= */
+    /* Empty state */
 
-function renderTasks() {
+    if (!visible.length) {
 
-    pendingTasks.innerHTML = "";
-
-    completedTasks.innerHTML = "";
+        emptyState.hidden =
+            false;
 
 
-    const pending = tasks.filter(
-        task => !task.completed
-    );
+        if (
+            tasks.length
+            &&
+            searchInput.value.trim()
+        ) {
+
+            emptyTitle.textContent =
+                "No matching tasks.";
+
+            emptyText.textContent =
+                "Try a different search term.";
+
+        }
+
+        else if (
+            currentFilter ===
+            "completed"
+        ) {
+
+            emptyTitle.textContent =
+                "Nothing completed yet.";
+
+            emptyText.textContent =
+                "Finished tasks will appear here.";
+
+        }
+
+        else if (
+            currentFilter ===
+            "active"
+        ) {
+
+            emptyTitle.textContent =
+                "You're all caught up.";
+
+            emptyText.textContent =
+                "There are no active tasks right now.";
+
+        }
+
+        else {
+
+            emptyTitle.textContent =
+                "Your list is clear.";
+
+            emptyText.textContent =
+                "Add a task above and make your next move.";
+
+        }
+
+    }
+
+    else {
+
+        emptyState.hidden =
+            true;
 
 
-    const completed = tasks.filter(
-        task => task.completed
-    );
+        visible.forEach(task => {
 
+            taskList.appendChild(
+                createTaskElement(task)
+            );
 
-    /* Counts */
+        });
 
-    pendingCount.textContent =
-        `${pending.length} ${pending.length === 1 ? "pending" : "pending"}`;
-
-
-    completedCount.textContent =
-        `${completed.length} ${completed.length === 1 ? "completed" : "completed"}`;
-
-
-    /* Empty states */
-
-    pendingEmpty.style.display =
-        pending.length === 0 ? "block" : "none";
-
-
-    completedEmpty.style.display =
-        completed.length === 0 ? "block" : "none";
-
-
-    /* Render pending */
-
-    pending.forEach(task => {
-
-        pendingTasks.appendChild(
-            createTaskElement(task)
-        );
-
-    });
-
-
-    /* Render completed */
-
-    completed.forEach(task => {
-
-        completedTasks.appendChild(
-            createTaskElement(task)
-        );
-
-    });
-
+    }
 }
 
 
@@ -186,145 +439,370 @@ function renderTasks() {
 
 function createTaskElement(task) {
 
-    const item = document.createElement("div");
+    const item =
+        document.createElement(
+            "article"
+        );
+
 
     item.className =
-        `task-item ${task.completed ? "completed" : ""}`;
+        `task-item ${
+            task.completed
+                ? "completed"
+                : ""
+        }`;
 
 
     /* Check button */
 
-    const checkButton = document.createElement("button");
+    const check =
+        document.createElement(
+            "button"
+        );
 
-    checkButton.className = "task-check";
 
-    checkButton.setAttribute(
+    check.className =
+        "check-btn";
+
+
+    check.type =
+        "button";
+
+
+    check.textContent =
+        "✓";
+
+
+    check.title =
+        task.completed
+            ? "Mark as active"
+            : "Complete task";
+
+
+    check.setAttribute(
         "aria-label",
         task.completed
-            ? "Mark task as pending"
-            : "Mark task as complete"
+            ? "Mark as active"
+            : "Complete task"
     );
 
-    checkButton.textContent = "✓";
 
-
-    checkButton.addEventListener(
+    check.addEventListener(
         "click",
-        () => toggleTask(task.id)
+        () =>
+            toggleTask(task.id)
     );
 
 
-    /* Content */
+    /* Main content */
 
-    const content = document.createElement("div");
-
-    content.className = "task-content";
-
-
-    const text = document.createElement("p");
-
-    text.className = "task-text";
-
-    text.textContent = task.text;
+    const main =
+        document.createElement(
+            "div"
+        );
 
 
-    const time = document.createElement("p");
+    main.className =
+        "task-main";
 
-    time.className = "task-time";
+
+    const text =
+        document.createElement(
+            "p"
+        );
 
 
-    if (task.completed && task.completedAt) {
+    text.className =
+        "task-text";
 
-        time.textContent =
-            `Completed ${formatTime(task.completedAt)}`;
 
-    } else {
+    text.textContent =
+        task.text;
 
-        time.textContent =
-            `Added ${formatTime(task.createdAt)}`;
 
+    /* Metadata */
+
+    const meta =
+        document.createElement(
+            "div"
+        );
+
+
+    meta.className =
+        "task-meta";
+
+
+    /* Priority */
+
+    const priority =
+        document.createElement(
+            "span"
+        );
+
+
+    priority.className =
+        `priority ${task.priority}`;
+
+
+    priority.textContent =
+        `${task.priority} priority`;
+
+
+    meta.appendChild(
+        priority
+    );
+
+
+    /* Created / completed time */
+
+    const created =
+        document.createElement(
+            "span"
+        );
+
+
+    created.textContent =
+
+        task.completed
+
+            ? `Completed ${
+                formatDate(
+                    task.completedAt
+                )
+            }`
+
+            : `Added ${
+                formatDate(
+                    task.createdAt
+                )
+            }`;
+
+
+    meta.appendChild(
+        created
+    );
+
+
+    /* Due date */
+
+    if (task.dueDate) {
+
+        const due =
+            document.createElement(
+                "span"
+            );
+
+
+        due.className =
+            "due-date";
+
+
+        due.textContent =
+            `Due ${
+                formatDueDate(
+                    task.dueDate
+                )
+            }`;
+
+
+        meta.appendChild(
+            due
+        );
     }
 
 
-    content.appendChild(text);
-
-    content.appendChild(time);
+    main.append(
+        text,
+        meta
+    );
 
 
     /* Actions */
 
-    const actions = document.createElement("div");
+    const actions =
+        document.createElement(
+            "div"
+        );
 
-    actions.className = "task-actions";
+
+    actions.className =
+        "task-actions";
 
 
     /* Edit */
 
-    const editButton = document.createElement("button");
-
-    editButton.className =
-        "action-button edit-button";
-
-    editButton.textContent = "Edit";
+    const edit =
+        document.createElement(
+            "button"
+        );
 
 
-    editButton.addEventListener(
+    edit.className =
+        "action-btn";
+
+
+    edit.type =
+        "button";
+
+
+    edit.textContent =
+        "Edit";
+
+
+    edit.addEventListener(
         "click",
-        () => editTask(task.id, content)
+        () =>
+            editTask(
+                task.id,
+                main
+            )
     );
 
 
     /* Complete / Undo */
 
-    const completeButton = document.createElement("button");
-
-    completeButton.className =
-        "action-button complete-button";
-
-    completeButton.textContent =
-        task.completed ? "Undo" : "Complete";
+    const complete =
+        document.createElement(
+            "button"
+        );
 
 
-    completeButton.addEventListener(
+    complete.className =
+        "action-btn";
+
+
+    complete.type =
+        "button";
+
+
+    complete.textContent =
+        task.completed
+            ? "Undo"
+            : "Complete";
+
+
+    complete.addEventListener(
         "click",
-        () => toggleTask(task.id)
+        () =>
+            toggleTask(
+                task.id
+            )
     );
 
 
     /* Delete */
 
-    const deleteButton = document.createElement("button");
-
-    deleteButton.className =
-        "action-button delete-button";
-
-    deleteButton.textContent = "Delete";
+    const del =
+        document.createElement(
+            "button"
+        );
 
 
-    deleteButton.addEventListener(
+    del.className =
+        "action-btn delete";
+
+
+    del.type =
+        "button";
+
+
+    del.textContent =
+        "Delete";
+
+
+    del.addEventListener(
         "click",
-        () => deleteTask(task.id)
+        () =>
+            deleteTask(
+                task.id
+            )
     );
 
 
-    actions.appendChild(editButton);
+    actions.append(
+        edit,
+        complete,
+        del
+    );
 
-    actions.appendChild(completeButton);
 
-    actions.appendChild(deleteButton);
-
-
-    /* Assemble */
-
-    item.appendChild(checkButton);
-
-    item.appendChild(content);
-
-    item.appendChild(actions);
+    item.append(
+        check,
+        main,
+        actions
+    );
 
 
     return item;
+}
 
+
+/* =========================
+   ADD TASK
+========================= */
+
+function addTask(event) {
+
+    event.preventDefault();
+
+
+    const text =
+        taskInput.value.trim();
+
+
+    if (!text) {
+
+        taskInput.focus();
+
+        return;
+    }
+
+
+    const now =
+        Date.now();
+
+
+    tasks.unshift({
+
+        id:
+            now +
+            Math.random(),
+
+        text:
+            text,
+
+        priority:
+            priorityInput.value,
+
+        dueDate:
+            dateInput.value,
+
+        completed:
+            false,
+
+        createdAt:
+            now,
+
+        completedAt:
+            null
+
+    });
+
+
+    saveTasks();
+
+
+    taskForm.reset();
+
+
+    priorityInput.value =
+        "medium";
+
+
+    render();
+
+
+    taskInput.focus();
 }
 
 
@@ -334,34 +812,33 @@ function createTaskElement(task) {
 
 function toggleTask(id) {
 
-    const task = tasks.find(
-        task => task.id === id
-    );
+    const task =
+        tasks.find(
+            item =>
+                item.id === id
+        );
 
 
     if (!task) {
+
         return;
     }
 
 
-    task.completed = !task.completed;
+    task.completed =
+        !task.completed;
 
 
-    if (task.completed) {
-
-        task.completedAt = Date.now();
-
-    } else {
-
-        task.completedAt = null;
-
-    }
+    task.completedAt =
+        task.completed
+            ? Date.now()
+            : null;
 
 
     saveTasks();
 
-    renderTasks();
 
+    render();
 }
 
 
@@ -371,15 +848,17 @@ function toggleTask(id) {
 
 function deleteTask(id) {
 
-    tasks = tasks.filter(
-        task => task.id !== id
-    );
+    tasks =
+        tasks.filter(
+            task =>
+                task.id !== id
+        );
 
 
     saveTasks();
 
-    renderTasks();
 
+    render();
 }
 
 
@@ -387,77 +866,118 @@ function deleteTask(id) {
    EDIT TASK
 ========================= */
 
-function editTask(id, content) {
+function editTask(
+    id,
+    main
+) {
 
-    const task = tasks.find(
-        task => task.id === id
-    );
+    const task =
+        tasks.find(
+            item =>
+                item.id === id
+        );
 
 
     if (!task) {
+
         return;
     }
 
 
-    const currentText = task.text;
+    const oldText =
+        task.text;
 
 
-    content.innerHTML = "";
+    main.innerHTML =
+        "";
 
 
-    const input = document.createElement("input");
-
-    input.type = "text";
-
-    input.className = "edit-input";
-
-    input.value = currentText;
-
-    input.maxLength = 150;
+    const input =
+        document.createElement(
+            "input"
+        );
 
 
-    content.appendChild(input);
+    input.className =
+        "edit-input";
+
+
+    input.type =
+        "text";
+
+
+    input.value =
+        oldText;
+
+
+    input.maxLength =
+        150;
+
+
+    main.appendChild(
+        input
+    );
 
 
     input.focus();
 
+
     input.select();
 
 
-    function saveEdit() {
+    let saved =
+        false;
 
-        const newText = input.value.trim();
+
+    function finish() {
+
+        if (saved) {
+
+            return;
+        }
 
 
-        if (newText) {
+        saved =
+            true;
 
-            task.text = newText;
 
+        const value =
+            input.value.trim();
+
+
+        if (value) {
+
+            task.text =
+                value;
         }
 
 
         saveTasks();
 
-        renderTasks();
 
+        render();
     }
 
 
     input.addEventListener(
         "keydown",
-        function (event) {
+        event => {
 
-            if (event.key === "Enter") {
+            if (
+                event.key ===
+                "Enter"
+            ) {
 
-                saveEdit();
-
+                finish();
             }
 
 
-            if (event.key === "Escape") {
+            if (
+                event.key ===
+                "Escape"
+            ) {
 
-                renderTasks();
-
+                render();
             }
 
         }
@@ -466,14 +986,180 @@ function editTask(id, content) {
 
     input.addEventListener(
         "blur",
-        saveEdit
+        finish
+    );
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function setFilter(filter) {
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.filter ===
+                filter
+            );
+
+        });
+
+
+    render();
+}
+
+
+/* =========================
+   THEME
+========================= */
+
+function setTheme(theme) {
+
+    document.body.classList.toggle(
+        "dark",
+        theme === "dark"
     );
 
+
+    localStorage.setItem(
+        "daymarkTheme",
+        theme
+    );
+
+
+    themeToggle.textContent =
+        theme === "dark"
+            ? "☾"
+            : "☼";
+
+
+    themeToggle.setAttribute(
+        "aria-label",
+        theme === "dark"
+            ? "Switch to light mode"
+            : "Switch to dark mode"
+    );
+
+
+    themeToggle.title =
+        theme === "dark"
+            ? "Switch to light mode"
+            : "Switch to dark mode";
 }
+
+
+/* =========================
+   EVENT LISTENERS
+========================= */
+
+taskForm.addEventListener(
+    "submit",
+    addTask
+);
+
+
+searchInput.addEventListener(
+    "input",
+    render
+);
+
+
+/* Filter buttons */
+
+document
+    .querySelectorAll(
+        ".filter-btn"
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () =>
+                setFilter(
+                    button.dataset.filter
+                )
+        );
+
+    });
+
+
+/* Clear completed */
+
+clearCompleted.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !tasks.some(
+                task =>
+                    task.completed
+            )
+        ) {
+
+            return;
+        }
+
+
+        tasks =
+            tasks.filter(
+                task =>
+                    !task.completed
+            );
+
+
+        saveTasks();
+
+
+        render();
+
+    }
+);
+
+
+/* Theme */
+
+themeToggle.addEventListener(
+    "click",
+    () => {
+
+        setTheme(
+            document.body.classList.contains(
+                "dark"
+            )
+                ? "light"
+                : "dark"
+        );
+
+    }
+);
 
 
 /* =========================
    INITIAL LOAD
 ========================= */
 
-renderTasks();
+const savedTheme =
+    localStorage.getItem(
+        "daymarkTheme"
+    );
+
+
+setTheme(
+    savedTheme === "dark"
+        ? "dark"
+        : "light"
+);
+
+
+render();
